@@ -7,7 +7,6 @@ export default class FourthContant extends Component {
         }
     }
     componentDidMount() {
-        console.log(this.props.style)
     }
     render() {
         return (

@@ -1,0 +1,119 @@
+.second{
+  background: url('../../assets/img/5.jpg') no-repeat center center;
+  background-size: 100% auto; 
+  .second-main{
+    width: 100%;
+    height: calc(100% - 25vh);
+    background: rgba(0,0,0,0.7);
+    padding-top: 25vh;
+    .second-head{
+      cursor: pointer;
+      margin: 0 auto;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 5px solid rgba(256,256,256,0.5);
+      background: url('../../assets/img/head.png') no-repeat center;
+      background-size: 110% 110%;
+      transition: all .8s ease-out;
+      // animation-iteration-count: infinite;
+    }
+    .second-head-active{
+      animation-name: HeadRotate;
+      animation-duration: 5s;
+      animation-timing-function: ease-out;
+      animation-fill-mode: backwards;
+    }
+    @keyframes HeadRotate {
+      0%{
+        transform: scale(0);
+        opacity: 0;
+      }
+      45%{
+        transform: scale(1.1);
+      }
+      50%{
+        transform: scale(1);
+        opacity: 0.5;
+        transform: rotate(0deg)
+      }
+      100%{
+        transform: rotate(360deg)
+      }
+    }
+    .second-head:hover{
+      transform: scale(1.05)
+    }
+
+    // 内容
+    .second-contain{
+      padding: 20px 0;
+      width: 800px;
+      margin: 0 auto;
+      color: #fff;
+      font-size: 18px;
+      .second-title{
+        margin: 0 auto;
+        text-align: center;
+        opacity: 0;
+        transition: all 0.6s linear;
+        p{
+
+        }
+        p:last-child{
+
+        }
+      }
+      .second-title-active{
+        opacity: 1;
+      }
+      .second-block{
+        .second-group{
+          text-align: center;
+          display: block;
+          margin: 0 auto;
+          margin-bottom: 5px;
+          p{
+            display: inline-block;
+            height: 25px;
+            line-height: 25px;
+            background: #ccc;
+            border-radius: 6px;
+            padding: 0 10px;
+            margin-right: 8px;
+            color: #1890ff;
+            background: #e6f7ff;
+            border: 1px solid #91d5ff;
+            opacity: 0.9;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+          }
+          .p-active{
+          }
+          p:hover{
+            transform: scale(1.1)
+          }
+          p:last-child{
+            margin-right: 0;
+          }
+        }
+        .second-group-active{
+          animation-name: BlockP;
+          animation-duration: 1s;
+          animation-timing-function: ease-out;
+          animation-fill-mode: backwards;
+        }
+        @keyframes BlockP {
+          0%{
+            opacity: 0;
+            transform: scale(0.5);
+          }
+          100%{
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      }
+    }
+  }
+}

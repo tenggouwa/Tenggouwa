@@ -1,6 +1,7 @@
 import React from 'react'
 import Loadable from 'react-loadable'
-// import styles from './loadableHandler.scss'
+import Gif from '../../assets/load.gif'
+import './loadableHandler.scss'
 
 function Loading() {
     // if (props.error) {
@@ -10,7 +11,11 @@ function Loading() {
     // } else if (props.pastDelay) {
     //     return <div className={styles.main} >Loading...</div>
     // }
-    return <div>111</div>
+    return (
+        <div className="loading">
+            <img src={Gif} alt="" />
+        </div>
+    )
 }
 
 // 实现页面组件按需引入
