@@ -1,10 +1,10 @@
-import i18next from 'i18next';
-import { reactI18nextModule } from 'react-i18next';
-import zh from './zh.js';
-import en from './en.js';
+import i18next from 'i18next'
+import { reactI18nextModule } from 'react-i18next'
+import zh from './zh.js'
+import en from './en.js'
 
-const lng = localStorage.lang || navigator.language || 'en';
-localStorage.lang = lng;
+const lng = localStorage.lang || navigator.language || 'en'
+localStorage.lang = lng
 
 // 将i8next配置全局配置到react-i8next(通过reactI18nextModule)
 i18next
@@ -22,8 +22,8 @@ i18next
         },
     }, (err, t) => {
         if (err) {
-            return err;
+            return err
         }
-        return t;
-    });
+        return t
+    })
 

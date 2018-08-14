@@ -5,38 +5,43 @@ const config = require('../config')
 const utils = require('./utils')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const ThemeWebpackPlugin = require('./theme-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const loadMinified = require('./load-minified')
 
-const env = config.build.env
+const { env } = config.build
 
 const webpackConfig = merge(baseWebpackConfig, {
-    mode: 'production',
-    module: {
-        rules: [{
-            test: /\.scss$/,
-            use: [
-                'style-loader',
-                MiniCssExtractPlugin.loader,
-                'css-loader?minimize=true&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-                'sass-loader',
-                'postcss-loader'
-            ],
-            include: [utils.resolve('src'), utils.resolve('test')]
-        }]
-    },
+    mode: JSON.parse(env.NODE_ENV),
     // devtool: config.build.productionSourceMap ? '#source-map' : false,
     output: {
         path: config.build.assetsRoot,
         filename: utils.assetsPath('js/[name].[chunkhash].js'),
         chunkFilename: utils.assetsPath('js/[name].[chunkhash].js')
     },
+    module: {
+        rules: [
+            {
+                test: /\.scss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader?minimize=true&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+                    'sass-loader',
+                    'postcss-loader'
+                ],
+                include: [utils.resolve('src'), utils.resolve('test')]
+            }
+        ]
+    },
     plugins: [
+        new MiniCssExtractPlugin({
+            filename: utils.assetsPath('css/[name].[contenthash].css'),
+            chunkFilename: utils.assetsPath('css/[name].[contenthash].css')
+            // filename: "[name].css"
+        }),
         // http://vuejs.github.io/vue-loader/en/workflow/production.html
         new webpack.DefinePlugin({
             'process.env': env,
@@ -44,22 +49,6 @@ const webpackConfig = merge(baseWebpackConfig, {
                 suffix: ''
             })
         }),
-        new UglifyJsPlugin(),
-        // extract css into its own file
-        new MiniCssExtractPlugin({
-            filename: utils.assetsPath('css/[name].[hash].css')
-            // filename: "[name].css"
-        }),
-        // Compress extracted CSS. We are using this plugin so that possible
-        // duplicated CSS from different components can be deduped.
-        // new OptimizeCSSPlugin({
-        //     cssProcessorOptions: {
-        //         safe: true
-        //     }
-        // }),
-        // generate dist index.html with correct asset hash for caching.
-        // you can customize output by editing /index.html
-        // see https://github.com/ampedandwired/html-webpack-plugin
         new HtmlWebpackPlugin({
             filename: config.build.index,
             template: 'index.html',
@@ -75,34 +64,7 @@ const webpackConfig = merge(baseWebpackConfig, {
             chunksSortMode: 'dependency',
             serviceWorkerLoader: `<script>${loadMinified(path.resolve(__dirname, 'service-worker-prod.js'))}</script>`
         }),
-        // split vendor js into its own file
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'vendor',
-        //     minChunks: function (module, count) {
-        //         // any required modules inside node_modules are extracted to vendor
-        //         return (
-        //             module.resource &&
-        //             /\.js$/.test(module.resource) &&
-        //             module.resource.indexOf(
-        //                 path.join(__dirname, '../node_modules')
-        //             ) === 0
-        //         )
-        //     }
-        // }),
-        // extract webpack runtime and module manifest to its own file in order to
-        // prevent vendor hash from being updated whenever app bundle is updated
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'manifest',
-        //     chunks: ['vendor']
-        // }),
-        // copy custom static assets
-        /*new CopyWebpackPlugin([
-          {
-            from: path.resolve(__dirname, '../static'),
-            to: config.build.assetsSubDirectory,
-            ignore: ['.*']
-          }
-        ])*/
+        new ThemeWebpackPlugin(config.themes),
         new SWPrecacheWebpackPlugin({
             cacheId: '{{ name }}',
             filename: 'service-worker.js',
@@ -111,14 +73,28 @@ const webpackConfig = merge(baseWebpackConfig, {
             minify: true,
             navigateFallback: config.build.assetsPublicPath + 'index.html',
             stripPrefix: config.build.assetsRoot
-         })
+        }),
+        // copy custom static assets
+        new CopyWebpackPlugin([
+            {
+            from: path.resolve(__dirname, '../static'),
+            to: config.build.assetsSubDirectory,
+            ignore: ['.*']
+            }
+        ]),
+        new webpack.DefinePlugin({
+        //Set true for the full bodymovin.min and false for bodymovin_light.min
+            BODYMOVIN_EXPRESSION_SUPPORT: true
+        })
+
     ],
     optimization: {
         runtimeChunk: {
             name: 'manifest'
         },
         splitChunks: {
-            chunks: "async",
+            // chunks: "initial", async
+            chunks: "initial",
             minSize: 30000,
             minChunks: 1,
             maxAsyncRequests: 5,
@@ -128,8 +104,11 @@ const webpackConfig = merge(baseWebpackConfig, {
             cacheGroups: {
                 commons: {
                     test: /[\\/]node_modules[\\/]/,
-                    name: "vendors",
-                    chunks: "all"
+                    name: "vendors"
+                },
+                tools: {
+                    test: /[\\/]src[\\/]tools[\\/]/,
+                    name: "tools"
                 }
             }
         },

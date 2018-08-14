@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React from 'react'
+import { Route } from 'react-router-dom'
 
 // 路由组建配置
 export default (route) => {
@@ -7,6 +7,6 @@ export default (route) => {
         path: route.path,
         exact: route.exact,
         render: props => <route.component {...props} routes={route.routes} />
-    };
-    return <Route {...attrs} />;
-};
+    }
+    return <Route {...attrs} />
+}

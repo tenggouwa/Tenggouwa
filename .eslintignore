@@ -2,6 +2,11 @@
 .DS_Store
 node_modules/*
 dist/*
+build/*
+config/*
+src/components/shapeShifter/shape-shifter.js
+src/pages/start/build.js
+src/pages/start/modernizr.js
 npm-debug.log
 yarn-error.log
 npm-debug.log*

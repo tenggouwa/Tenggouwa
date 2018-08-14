@@ -32,7 +32,6 @@ module.exports = function (config) {
             route: route,
             match: match
         }
-        console.log(request)
         //if match file's extension not js or json , return next()
         if (!(match && match.file) || !utils.contains(config.mockExts, path.extname(match.file)))
             return next()
@@ -62,8 +61,6 @@ module.exports = function (config) {
         }
 
         //DEFAULT ALLOW CORS
-        console.log(response)
-        console.log(res)
         res.setHeader('Access-Control-Allow-Origin', '*')
         res.setHeader('Access-Control-Allow-Methods', '*')
 
