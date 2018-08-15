@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js --host 0.0.0.0",
+    "start": "node build/dev-server.js --host 0.0.0.0",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
     "new": "node build/fs-init.js"
