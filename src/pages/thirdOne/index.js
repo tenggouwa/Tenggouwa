@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+import Message from '../../components/message/index'
 import './index.scss'
 
 export default class ThirdContant extends Component {
@@ -17,59 +19,44 @@ export default class ThirdContant extends Component {
                 link: '...',
             },
             {
-                key: 0,
+                key: 1,
                 src: '...',
                 link: '...',
             },
             {
-                key: 0,
+                key: 2,
                 src: '...',
                 link: '...',
             },
             {
-                key: 0,
+                key: 3,
                 src: '...',
                 link: '...',
             },
             {
-                key: 0,
+                key: 4,
+                src: '...',
+                link: '...',
+            },
+            {
+                key: 5,
                 src: '...',
                 link: '...',
             }
         ]
-        console.log(dataList)
         return (
             <div style={this.props.style} className="third">
-                <div className="third-gorup">
-                    <div />
-                    <p>17681875268</p>
-                    <button>复制地址</button>
-                </div>
-                <div className="third-gorup">
-                    <div />
-                    <p>17681875268</p>
-                    <button>复制地址</button>
-                </div>
-                <div className="third-gorup">
-                    <div />
-                    <p>17681875268</p>
-                    <button>复制地址</button>
-                </div>
-                <div className="third-gorup">
-                    <div />
-                    <p>17681875268</p>
-                    <button>复制地址</button>
-                </div>
-                <div className="third-gorup">
-                    <div />
-                    <p>17681875268</p>
-                    <button>复制地址</button>
-                </div>
-                <div className="third-gorup">
-                    <div />
-                    <p>17681875268</p>
-                    <button>复制地址</button>
-                </div>
+                {
+                    dataList.map(item => (
+                        <div className="third-gorup" key={item.key}>
+                            <div />
+                            <p>{item.src}</p>
+                            <CopyToClipboard key="copyToClipboard" text={item.src} onCopy={() => { Message.success('复制成功') }}>
+                                <button>复制地址</button>
+                            </CopyToClipboard>
+                        </div>
+                    ))
+                }
             </div>
         )
     }
