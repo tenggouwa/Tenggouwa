@@ -15,33 +15,39 @@ export default class ThirdContant extends Component {
         const dataList = [
             {
                 key: 0,
-                src: '...',
-                link: '...',
+                src: 'http://admin5268.gz01.bdysite.com/Tenggouwa/Img/1.jpg',
+                name: '恒生智汇云',
+                link: 'https://ito.hs.net/',
             },
             {
                 key: 1,
-                src: '...',
-                link: '...',
+                src: 'http://admin5268.gz01.bdysite.com/Tenggouwa/Img/2.png',
+                name: '33.cn复杂美',
+                link: 'https://www.33.cn/',
             },
             {
                 key: 2,
-                src: '...',
-                link: '...',
+                src: 'http://admin5268.gz01.bdysite.com/Tenggouwa/Img/3.jpg',
+                name: '找币交易所',
+                link: 'https://www.zhaobi.com/#/index',
             },
             {
                 key: 3,
-                src: '...',
-                link: '...',
+                src: 'http://admin5268.gz01.bdysite.com/Tenggouwa/Img/4.jpg',
+                name: 'Fortuna官网',
+                link: 'https://fota.io/',
             },
             {
                 key: 4,
-                src: '...',
-                link: '...',
+                src: 'http://admin5268.gz01.bdysite.com/Tenggouwa/Img/5.jpg',
+                name: 'FortunaBBS论坛',
+                link: 'https://bbs.fota.io/',
             },
             {
                 key: 5,
-                src: '...',
-                link: '...',
+                src: 'http://admin5268.gz01.bdysite.com/Tenggouwa/Img/6.jpg',
+                name: '方塔衍生品交易平台',
+                link: 'http://47.96.74.52:8089/home4',
             }
         ]
         return (
@@ -49,9 +55,16 @@ export default class ThirdContant extends Component {
                 {
                     dataList.map(item => (
                         <div className="third-gorup" key={item.key}>
-                            <div />
-                            <p>{item.src}</p>
-                            <CopyToClipboard key="copyToClipboard" text={item.src} onCopy={() => { Message.success('复制成功') }}>
+                            <a href={item.link} target="_blank" rel="noopener noreferrer">
+                                <div
+                                    className="third-back"
+                                    style={{
+                                        background: `url('${item.src}') no-repeat center`,
+                                    }}
+                                />
+                            </a>
+                            <p>{item.name}</p>
+                            <CopyToClipboard key="copyToClipboard" text={item.link} onCopy={() => { Message.success('地址已经复制到您的剪切板了哦！') }}>
                                 <button>复制地址</button>
                             </CopyToClipboard>
                         </div>

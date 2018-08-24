@@ -24,20 +24,31 @@ export default class SecondContant extends Component {
                         </div>
                         <div className="second-block">
                             <div className={Active ? 'second-group-active second-group' : 'second-group'}>
-                                <p style={{ opacity: '0.5' }}>vue</p>
-                                <p style={{ opacity: '0.6' }}>vue</p>
+                                <p style={{ opacity: '0.5' }}>4-5年</p>
+                                <p style={{ opacity: '0.5' }}>区块链</p>
+                                <p style={{ opacity: '0.5' }}>IT</p>
+                            </div>
+                            <div className={Active ? 'second-group-active second-group' : 'second-group'}>
+                                <p style={{ opacity: '0.7' }}>Javascript</p>
+                                <p style={{ opacity: '0.8' }}>H5/CSS3</p>
+                                <p style={{ opacity: '0.8' }}>JQ</p>
                             </div>
                             <div className={Active ? 'second-group-active second-group' : 'second-group'}>
                                 <p style={{ opacity: '0.7' }}>react</p>
-                                <p style={{ opacity: '0.8' }}>react</p>
-                                <p style={{ opacity: '0.9' }}>react</p>
+                                <p style={{ opacity: '0.8' }}>vue</p>
+                                <p style={{ opacity: '0.8' }}>webpack/gulp</p>
+                                <p style={{ opacity: '0.8' }}>git/svn</p>
+                                <p style={{ opacity: '0.4' }}>angular</p>
                             </div>
                             <div className={Active ? 'second-group-active second-group' : 'second-group'}>
-                                <p style={{ opacity: '1' }}>angular</p>
-                                <p style={{ opacity: '0.5' }}>angular</p>
+                                <p style={{ opacity: '0.7' }}>ES6,7</p>
+                                <p style={{ opacity: '0.8' }}>axios</p>
+                                <p style={{ opacity: '0.7' }}>echarts</p>
+                                <p style={{ opacity: '0.5' }}>Canvas/Svg</p>
                             </div>
                             <div className={Active ? 'second-group-active second-group' : 'second-group'}>
-                                <p style={{ opacity: '0.6' }}>angular</p>
+                                <p style={{ opacity: '0.8' }}>ElementUI</p>
+                                <p style={{ opacity: '0.8' }}>AntD</p>
                             </div>
                         </div>
                     </div>

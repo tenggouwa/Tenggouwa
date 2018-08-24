@@ -9,7 +9,6 @@
     width: 33.3%;
     min-width: 33.3%;
     max-width: 33.3%;
-    // height: 90px;
     padding: 40px 40px 60px 40px;
     box-sizing: border-box;
     color: #fff;
@@ -18,6 +17,13 @@
       width: 100%;
       height: 100%;
       background: #fff;
+      transition: all .3s linear;
+    }
+    .third-back{
+      background-size: 100% 100% !important; 
+    }
+    .third-back:hover{
+      background-size: 110% 110% !important; 
     }
     p{
       float: left;

@@ -3,9 +3,9 @@
   background-size: 100% auto; 
   .second-main{
     width: 100%;
-    height: calc(100% - 25vh);
+    height: calc(100% - 20vh);
     background: rgba(0,0,0,0.7);
-    padding-top: 25vh;
+    padding-top: 20vh;
     .second-head{
       cursor: pointer;
       margin: 0 auto;
@@ -53,6 +53,7 @@
       color: #fff;
       font-size: 18px;
       .second-title{
+        padding: 20px 0 40px 0;
         margin: 0 auto;
         text-align: center;
         opacity: 0;
