@@ -47,7 +47,7 @@ export default class ThirdContant extends Component {
                 key: 5,
                 src: 'http://admin5268.gz01.bdysite.com/Tenggouwa/Img/6.jpg',
                 name: '方塔衍生品交易平台',
-                link: 'http://47.96.74.52:8089/home4',
+                link: 'https://www.fota.com/',
             }
         ]
         return (
