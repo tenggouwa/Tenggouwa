@@ -3,6 +3,7 @@ import FirstContant from '../firstOne'
 import SecondContant from '../secondOne'
 import ThirdContant from '../thirdOne'
 import FourthContant from '../fourthOne'
+import ScrollTop from '@/components/scrollTop'
 import './home.scss'
 
 export default class App extends Component {
@@ -87,24 +88,29 @@ export default class App extends Component {
         this.goUpDown(1)
     }
     render() {
+        const offset = this.state.offsetheight
+        const { fullPage } = this.state
         return (
-            <div className="section" style={{ height: this.state.offsetheight + 'px' }}>
-                <div className="container" style={{ height: this.state.offsetheight + 'px', transform: 'translate3d(0px, -' + (this.state.fullPage * this.state.offsetheight) + 'px ,0px)' }}>
-                    <FirstContant NextClick={() => { this.NextTick() }} Init={this.state.fullPage === 0} style={{ height: this.state.offsetheight + 'px' }} />
-                    <SecondContant NextClick={() => { this.NextTick() }} Init={this.state.fullPage === 1} style={{ height: this.state.offsetheight + 'px' }} />
-                    <ThirdContant NextClick={() => { this.NextTick() }} Init={this.state.fullPage === 2} style={{ height: this.state.offsetheight + 'px' }} />
-                    <FourthContant NextClick={() => { this.NextTick() }} Init={this.state.fullPage === 3} style={{ height: this.state.offsetheight + 'px' }} />
+            <div className="section" style={{ height: offset + 'px' }}>
+                <div className="container" style={{ height: offset + 'px', transform: 'translate3d(0px, -' + (fullPage * offset) + 'px ,0px)' }}>
+                    <FirstContant NextClick={() => { this.NextTick() }} Init={fullPage === 0} style={{ height: offset + 'px' }} />
+                    <SecondContant NextClick={() => { this.NextTick() }} Init={fullPage === 1} style={{ height: offset + 'px' }} />
+                    <ThirdContant NextClick={() => { this.NextTick() }} Init={fullPage === 2} style={{ height: offset + 'px' }} />
+                    <FourthContant NextClick={() => { this.NextTick() }} Init={fullPage === 3} style={{ height: offset + 'px' }} />
                 </div>
                 <div className="fixed-list">
                     {
                         this.state.bannerList.map((item, index) => (
                             <div
                                 key={index}
-                                className={this.state.fullPage === index ? 'color' : ''}
+                                className={fullPage === index ? 'color' : ''}
                                 onClick={() => { this.pageInfo(index) }}
                             />
                         ))
                     }
+                </div>
+                <div onClick={() => { this.setState({ fullPage: 0 }) }} className={fullPage === 0 ? 'visable' : null}>
+                    <ScrollTop />
                 </div>
             </div>
         )

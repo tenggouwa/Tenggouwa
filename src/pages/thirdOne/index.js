@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import Message from '../../components/message/index'
+import NextClickTick from '@/components/nextClick'
 import './index.scss'
 
 export default class ThirdContant extends Component {
@@ -70,6 +71,7 @@ export default class ThirdContant extends Component {
                         </div>
                     ))
                 }
+                <NextClickTick NextClick={this.props.NextClick} style={this.props.style} />
             </div>
         )
     }

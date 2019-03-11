@@ -1,6 +1,7 @@
 .fourth{
   background: url('../../assets/img/3.jpg') no-repeat center center;
   background-size: 100% auto; 
+  position: relative;
   .fourth-main{
     width: 100%;
     height: calc(100% - 30vh);

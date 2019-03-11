@@ -1,0 +1,70 @@
+
+  .light-swip{
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    bottom: 90px;
+    .ActiveHead{
+      text-align: center;
+      i{
+        color: #fff;
+        opacity: 0.8;
+        font-size: 14px;
+        position: absolute;
+        text-align: center;
+        line-height: 36px;
+        margin: -2px 0 0 8px;
+        animation-name: LighI;
+        animation-duration: 3s;
+        animation-timing-function:  ease-out;
+        animation-fill-mode: backwards;
+        animation-iteration-count: infinite;
+      }
+      div{
+        width: 30px;
+        height: 30px;
+        background: #fff;
+        position: absolute;
+        border-radius: 50%;
+        animation-name: LightOnnn;
+        animation-duration: 3s;
+        animation-timing-function:  ease-out;
+        animation-fill-mode: backwards;
+        animation-iteration-count: infinite;
+      }
+      .lightTwo{
+        animation-delay:0.3s;
+      }
+      .lightThree{
+        animation-delay:0.6s;
+      }
+      @keyframes LighI {
+        0%{
+          opacity: 0.3;
+        }
+        50%{
+          opacity: 0.8;
+        }
+        100%{
+          opacity: 0.3;
+        }
+      }
+      @keyframes LightOnnn {
+        0%{
+          opacity: 0;
+          transform: scale(0.4)
+        }
+        10%{
+          opacity: 0.2;
+        }
+        33%{
+          opacity: 0;
+          transform: scale(1.2)
+        }
+        100%{
+          opacity: 0;
+          transform: scale(0.4)
+        }
+      }
+    }
+  }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import NextClickTick from '@/components/nextClick'
 import './index.scss'
 
 export default class SecondContant extends Component {
@@ -53,6 +54,7 @@ export default class SecondContant extends Component {
                         </div>
                     </div>
                 </div>
+                <NextClickTick NextClick={this.props.NextClick} style={this.props.style} />
             </div>
         )
     }
