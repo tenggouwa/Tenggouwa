@@ -1,0 +1,47 @@
+.swiper-container {
+  width: 1200px;
+  // height: 200px;
+}
+.swiper-slide {
+  // text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  // display: flex;
+  border: 1px solid #ccc;
+  position: relative;
+  padding: 10px;
+  width: 254px !important;
+  // height: 180px !important;
+  h5{
+      color: rgb(84, 97, 116);
+      font-size: 14px;
+      font-weight: bold;
+  }
+  img{
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+  }
+  .swipe-lable{
+      color: #ccc;
+      line-height: 30px;
+  }
+  .swipe-content{
+      color: rgb(84, 97, 116);
+      font-weight: bold;
+      position: relative;
+      .swipe-up{
+          color: red;
+          position: absolute;
+          right: 0px;
+      }
+      .swipe-down{
+          color: green;
+          position: absolute;
+          right: 0px;
+      }
+  }
+}

@@ -1,0 +1,66 @@
+.swiper{
+    overflow: hidden;
+    width: 1300px;
+    height: 200px;
+    position: relative;
+    background: #090;
+    .changeItem{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: #ccc;
+        top: 80px;
+    }
+    .right{
+        right: 0;
+    }
+    .swiper-main{
+        position: absolute;
+        width: 5000px;
+        height: 182px;
+        transition: left 0.3s ease-in-out;
+        .swiper-item{
+            float: left;
+            width: 254px;
+            height: 160px;
+            border: 1px solid #ccc;
+            position: relative;
+            padding: 10px;
+            margin-left: 30px;
+            h5{
+                color: rgb(84, 97, 116);
+                font-size: 14px;
+                font-weight: bold;
+            }
+            img{
+                width: 40px;
+                height: 40px;
+                position: absolute;
+                right: 10px;
+                top: 10px;
+            }
+            .swiper-lable{
+                color: #ccc;
+                line-height: 30px;
+            }
+            .swiper-content{
+                color: rgb(84, 97, 116);
+                font-weight: bold;
+                position: relative;
+                .swiper-up{
+                    color: red;
+                    position: absolute;
+                    right: 0px;
+                }
+                .swiper-down{
+                    color: green;
+                    position: absolute;
+                    right: 0px;
+                }
+            }
+        }
+        .swiper-item:first-child{
+            margin-left: 0;
+        }
+    }
+}
