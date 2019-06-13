@@ -9,4 +9,9 @@ module.exports = [{
     path: '/hah',
     exact: true,
     component: loadableHandler(() => import('./pages/hah'))
+},
+{
+    path: '/love',
+    exact: true,
+    component: loadableHandler(() => import('./pages/love'))
 }]
